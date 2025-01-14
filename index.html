@@ -1,0 +1,37 @@
+<html>
+<head>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+</head>
+<body>
+    <a-scene fog="type: linear; color: #236151 ; near: 1; far: 25; density: 0.1">
+        <a-assets>
+            <a-asset-item id="chair" src="./assets/Cabin chair.glb"></a-asset-item>
+            <a-asset-item id="tree" src="./assets/Dead tree.glb"></a-asset-item>
+            <a-asset-item id="temple" src="./assets/Temple.glb"></a-asset-item>
+        </a-assets>
+
+        <a-entity geometry="primitive:sphere; radius:.15" material="color: #8AE6D9; shader:flat; emissive: #8AE6D9 emissiveIntensity: 1" position="1.8 2 -4" light="type:ambient; color: #8AE6D9; density:.05"></a-entity>
+
+        <a-entity geometry="primitive:sphere; radius:.15" material="color: #8AE6D9; shader:flat; emissive: #8AE6D9 emissiveIntensity: 1" position="4 4.5 -2" light="type:ambient; color: #8AE6D9; density:.05"></a-entity>
+
+        <a-entity geometry="primitive:sphere; radius:.15" material="color: #8AE6D9; shader:flat; emissive: #8AE6D9 emissiveIntensity: 1" position="-1.5 3 -2" light="type:ambient; color: #8AE6D9; density:.05"></a-entity>
+
+        <a-entity geometry="primitive:sphere; radius:.15" material="color: #8AE6D9; shader:flat; emissive: #8AE6D9 emissiveIntensity: 1" position="-4 2 -4" light="type:ambient; color: #8AE6D9; density:.05"></a-entity>
+
+        <a-entity gltf-model="#tree" scale="4 4 4" position="-1 5.2 -4"></a-entity>
+
+        <a-entity gltf-model="#chair" scale="1.7 1.7 1.7" rotation="0 170 0" position="0.5 1.75 -2"></a-entity>
+
+        <a-box position="0 0 -4" rotation="-90 0 0" width="10" height="7" color="#102B24"></a-box>
+
+        <a-entity gltf-model="#temple" scale="15 15 15" rotation="0 170 0" position="0 -4 -28"></a-entity>
+        
+        <a-plane position="0 -1 -4" rotation="-90 0 0" width="50" height="20" color="#102B24"></a-plane>
+
+        <a-entity light="type:spot ;color: #BDD9CB; intensity: .3" position="0 5 10"></a-entity>
+
+        <a-sky color="#102B24"></a-sky>
+        <a-camera position="0 3 7"></a-camera>
+    </a-scene>
+</body>
+</html>
