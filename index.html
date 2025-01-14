@@ -8,6 +8,7 @@
             <a-asset-item id="chair" src="./assets/Cabin chair.glb"></a-asset-item>
             <a-asset-item id="tree" src="./assets/Dead tree.glb"></a-asset-item>
             <a-asset-item id="stairs" src="./assets/Stairs.glb"></a-asset-item>
+            <a-asset-item id="bench" src="./assets/Bench.glb"></a-asset-item>
         </a-assets>
 
         <a-entity geometry="primitive:sphere; radius:.15" material="color: #8AE6D9; shader:flat; emissive: #8AE6D9 emissiveIntensity: 100" position="1.8 2 -4"></a-entity>
@@ -27,6 +28,10 @@
         <a-entity gltf-model="#stairs" scale="9 9 9" position="-6.5 -0.6 -4" rotation="0 -90 0"></a-entity>
 
         <a-entity gltf-model="#stairs" scale="9 9 9" position="6.5 -0.6 -4" rotation="0 90 0"></a-entity>
+
+        <a-entity gltf-model="#bench" scale="5 5 5" rotation="0 160 0" position="-6.5 -1 0"></a-entity>
+
+        <a-entity gltf-model="#bench" scale="5 5 5" rotation="0 -160 0" position="6.5 -1 0"></a-entity>
 
         <a-box position="0 0 -4" rotation="-90 0 0" width="10" height="7" color="#102B24"></a-box>
         
