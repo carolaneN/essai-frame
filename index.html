@@ -1,29 +1,34 @@
 <html>
 <head>
     <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
 </head>
 <body>
-    <a-scene fog="type: linear; color: #236151 ; near: 1; far: 15; density: 0.1">
+    <a-scene fog="type: linear; color: #236151 ; near: 1; far: 15; density: 0.1" generate-spheres>
         <a-assets>
             <a-asset-item id="chair" src="./assets/Cabin chair.glb"></a-asset-item>
             <a-asset-item id="tree" src="./assets/Dead tree.glb"></a-asset-item>
             <a-asset-item id="stairs" src="./assets/Stairs.glb"></a-asset-item>
             <a-asset-item id="bench" src="./assets/Bench.glb"></a-asset-item>
         </a-assets>
-        <a-camera position="0 0 0"></a-camera>
+        <!-- <a-camera position="0 0 0"></a-camera> -->
+        <a-camera position="0 3 3">
+            <a-cursor></a-cursor>
+        </a-camera>
 
         <a-entity position="0  0.5 -4">
-        <a-entity geometry="primitive:sphere; radius:.15" material="color: #8AE6D9; shader:standard; emissive: #8AE6D9; emissiveIntensity: 50" position="1.8 2 -4"></a-entity>
-
-        <a-entity geometry="primitive:sphere; radius:.15" material="color: #8AE6D9; shader:standard; emissive: #8AE6D9; emissiveIntensity: 50" position="4 4.5 -2" ></a-entity>
-
-        <a-entity geometry="primitive:sphere; radius:.15" material="color: #8AE6D9; shader:standard; emissive: #8AE6D9; emissiveIntensity: 50" position="-1.5 3 -2"></a-entity>
-
-        <a-entity geometry="primitive:sphere; radius:.15" material="color: #8AE6D9; shader:standard; emissive: #8AE6D9; emissiveIntensity: 50" position="-4 2 -4"></a-entity>
 
         <a-entity gltf-model="#tree" scale="4 4 4" position="-1 5.2 -4"></a-entity>
 
-        <a-entity gltf-model="#chair" scale="1.7 1.7 1.7" rotation="0 170 0" position="0.5 1.75 -2"></a-entity>
+        <a-entity 
+        gltf-model="#chair"
+        scale="1.7 1.7 1.7"
+        rotation="0 170 0"
+        position="0.5 1.75 -2"
+        event-set__down="_event: mousedown; scale: 1.9 1.9 1.9"
+        event-set__up="_event: mouseup; scale: 1.7 1.7 1.7"
+        event-set__leave="_event: mouseleave; scale: 1.7 1.7 1.7"></a-entity>
 
         <a-entity gltf-model="#stairs" scale="9 9 9" position="0 -0.6 0"></a-entity>
 
@@ -31,9 +36,21 @@
 
         <a-entity gltf-model="#stairs" scale="9 9 9" position="6.5 -0.6 -4" rotation="0 90 0"></a-entity>
 
-        <a-entity gltf-model="#bench" scale="5 5 5" rotation="0 160 0" position="-6.5 -1 0"></a-entity>
+        <a-entity gltf-model="#bench"
+        scale="5 5 5"
+        rotation="0 160 0"
+        position="-6.5 -1 0"
+        event-set__down="_event: mousedown; scale: 5.4 5.4 5.4"
+        event-set__up="_event: mouseup; scale: 5 5 5"
+        event-set__leave="_event: mouseleave; scale: 5 5 5"></a-entity>
 
-        <a-entity gltf-model="#bench" scale="5 5 5" rotation="0 -160 0" position="6.5 -1 0"></a-entity>
+        <a-entity gltf-model="#bench"
+        scale="5 5 5"
+        rotation="0 -160 0"
+        position="6.5 -1 0"
+        event-set__down="_event: mousedown; scale: 5.2 5.2 5.2"
+        event-set__up="_event: mouseup; scale: 5 5 5"
+        event-set__leave="_event: mouseleave; scale: 5 5 5"></a-entity>
 
         <a-box position="0 0 -4" rotation="-90 0 0" width="10" height="7" color="#102B24"></a-box>
         
@@ -45,5 +62,44 @@
     </a-entity>
         
     </a-scene>
+
+    <script>
+        AFRAME.registerComponent("generate-spheres", {
+        init: function () {
+          for (let i = 0; i < 100; i++) {
+            const sphere = document.createElement("a-sphere");
+            sphere.setAttribute("position", {
+              x: Math.random() * 20 - 10,
+              y: Math.random() * 20,
+              z: Math.random() * 20 - 10,
+            });
+            sphere.setAttribute(
+              "color",
+              `#8AE6D9`,
+            );
+            sphere.setAttribute(
+                "radius",
+              `.1`,
+            );
+            sphere.setAttribute(
+                "shader",
+                `standard`,
+            )
+            sphere.setAttribute(
+                "emissive",
+                `#8AE6D9`,
+            )
+            sphere.setAttribute(
+                "emissiveIntensity",
+                `50`,
+            )
+            sphere.setAttribute("class", "clickable");
+            sphere.setAttribute("interactable", "");
+            this.el.appendChild(sphere);
+          }
+        },
+      });
+      </script>
+    
 </body>
 </html>
